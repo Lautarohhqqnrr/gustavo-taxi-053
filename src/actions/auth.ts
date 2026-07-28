@@ -57,7 +57,7 @@ export async function adminLogin(
     .eq('id', authData.user.id)
     .single()
 
-  if (!profile || !canAccessAdmin(profile.role)) {
+ if (!profile || !canAccessAdmin((profile as any).role)) {
     await supabase.auth.signOut()
     return {
       success: false,
