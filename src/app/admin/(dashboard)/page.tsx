@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
-import { getAdminUser } from '@/actions/auth'
+import { getSessionUser } from '@/lib/auth/session'
 
 export default async function AdminDashboard() {
-  const admin = await getAdminUser()
+  const admin = await getSessionUser()
   const supabase = await createClient()
 
   const [messages, reviews, posts, gallery] = await Promise.all([
