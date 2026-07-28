@@ -1,0 +1,26 @@
+{
+  "name": "Gustavo Taxi 053",
+  "short_name": "Gustavo Taxi",
+  "description": "Servicio de taxi premium en Esquel, Trevelin y toda la provincia del Chubut",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#D4AF37",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "transportation"],
+  "lang": "es-AR"
+}

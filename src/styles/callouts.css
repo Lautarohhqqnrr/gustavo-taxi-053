@@ -1,0 +1,110 @@
+/* ──────────────────────────────────────────────────────────────
+ * Callouts – estilos premium para el blog de Gustavo Taxi 053
+ * Se usan tanto en el editor (ProseMirror) como en la vista pública
+ * ────────────────────────────────────────────────────────────── */
+
+.callout {
+  position: relative;
+  margin: 1.75rem 0;
+  padding: 1.125rem 1.25rem 1.125rem 1.125rem;
+  border-radius: 0.75rem;
+  border-left-width: 4px;
+  border-left-style: solid;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: box-shadow 0.2s ease;
+}
+
+.callout:hover {
+  box-shadow: 0 4px 20px -4px rgb(0 0 0 / 0.25);
+}
+
+/* Variantes */
+.callout[data-type='info'] {
+  border-left-color: rgb(14 165 233); /* sky-500 */
+  background: linear-gradient(
+    135deg,
+    rgb(14 165 233 / 0.12) 0%,
+    rgb(14 165 233 / 0.04) 100%
+  );
+  color: rgb(224 242 254); /* sky-100 */
+}
+
+.callout[data-type='tip'] {
+  border-left-color: rgb(212 175 55); /* brand gold */
+  background: linear-gradient(
+    135deg,
+    rgb(212 175 55 / 0.14) 0%,
+    rgb(212 175 55 / 0.04) 100%
+  );
+  color: rgb(254 243 199); /* amber-100 */
+}
+
+.callout[data-type='warning'] {
+  border-left-color: rgb(249 115 22); /* orange-500 */
+  background: linear-gradient(
+    135deg,
+    rgb(249 115 22 / 0.12) 0%,
+    rgb(249 115 22 / 0.04) 100%
+  );
+  color: rgb(255 237 213); /* orange-100 */
+}
+
+.callout[data-type='success'] {
+  border-left-color: rgb(16 185 129); /* emerald-500 */
+  background: linear-gradient(
+    135deg,
+    rgb(16 185 129 / 0.12) 0%,
+    rgb(16 185 129 / 0.04) 100%
+  );
+  color: rgb(209 250 229); /* emerald-100 */
+}
+
+/* Contenido interno */
+.callout .callout-content,
+.callout > div {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.callout .callout-icon,
+.callout span:first-child {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  margin-top: 0.1rem;
+  user-select: none;
+}
+
+.callout p {
+  margin: 0.2rem 0;
+  line-height: 1.6;
+}
+
+.callout p:first-child {
+  margin-top: 0;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Dark mode ya está contemplado porque usamos colores con opacidad */
+
+/* Versión más compacta dentro del editor */
+.ProseMirror .callout {
+  margin: 1.25rem 0;
+  padding: 0.875rem 1rem;
+}
+
+/* Accesibilidad */
+.callout:focus-within {
+  outline: 2px solid rgb(212 175 55 / 0.5);
+  outline-offset: 2px;
+}
