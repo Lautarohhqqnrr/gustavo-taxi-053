@@ -100,7 +100,7 @@ export async function requireRouteAccess(pathname: string): Promise<SessionUser>
   return session
 }
 
-export function sessionHasPermission(
+export async function sessionHasPermission(
   session: SessionUser | null,
   permission: Permission
 ): boolean {
