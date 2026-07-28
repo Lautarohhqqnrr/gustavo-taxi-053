@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { getSessionUser } from '@/lib/auth/session'
 import { AdminShell } from '@/components/admin/AdminShell'
 

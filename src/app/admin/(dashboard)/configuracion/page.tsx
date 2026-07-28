@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"
 import { SITE, PAYMENT_METHODS } from '@/lib/constants'
 import { requirePermission } from '@/lib/auth/session'
 
