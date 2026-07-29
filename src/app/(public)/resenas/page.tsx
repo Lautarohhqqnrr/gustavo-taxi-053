@@ -5,38 +5,16 @@ import { Star } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Reseñas de clientes',
-  description:
-    'Opiniones de pasajeros de Gustavo Taxi 053 en Esquel, Trevelin y Chubut.',
+  description: 'Opiniones de pasajeros de Gustavo Taxi 053 en Esquel, Trevelin y Chubut.',
   alternates: { canonical: `${SITE.url}/resenas` },
 }
 
 export const revalidate = 60
 
 const fallbackReviews = [
-  {
-    id: '1',
-    name: 'María G.',
-    comment:
-      'Gustavo nos llevó al aeropuerto con tiempo de sobra. Puntual, amable y el auto impecable. Lo recomiendo 100%.',
-    rating: 5,
-    admin_reply: null,
-  },
-  {
-    id: '2',
-    name: 'Carlos R.',
-    comment:
-      'Viajamos a Bariloche en familia. El trayecto fue cómodo, con internet y paradas cuando lo necesitamos. Excelente servicio.',
-    rating: 5,
-    admin_reply: null,
-  },
-  {
-    id: '3',
-    name: 'Ana & Pedro',
-    comment:
-      'Contratamos el traslado a Lago Futalaufquen. Gustavo conoce cada curva. Se nota la experiencia. Volveremos a llamarlo.',
-    rating: 5,
-    admin_reply: null,
-  },
+  { id: '1', name: 'María G.', comment: 'Gustavo nos llevó al aeropuerto con tiempo de sobra. Puntual, amable y el auto impecable. Lo recomiendo 100%.', rating: 5, admin_reply: null },
+  { id: '2', name: 'Carlos R.', comment: 'Viajamos a Bariloche en familia. El trayecto fue cómodo, con internet y paradas cuando lo necesitamos. Excelente servicio.', rating: 5, admin_reply: null },
+  { id: '3', name: 'Ana & Pedro', comment: 'Contratamos el traslado a Lago Futalaufquen. Gustavo conoce cada curva. Se nota la experiencia. Volveremos a llamarlo.', rating: 5, admin_reply: null },
 ]
 
 export default async function ResenasPage() {
@@ -59,46 +37,26 @@ export default async function ResenasPage() {
     <div className="pt-20">
       <section className="section-padding">
         <div className="container mx-auto max-w-4xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-400">
-            Reseñas
-          </p>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl">
-            Lo que dicen los pasajeros
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-zinc-400">
-            La confianza se construye viaje a viaje.
-          </p>
+          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-gold-400">Reseñas</p>
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl">Lo que dicen los pasajeros</h1>
+          <p className="mx-auto max-w-2xl text-lg text-zinc-400">La confianza se construye viaje a viaje.</p>
         </div>
       </section>
 
       <section className="pb-20">
         <div className="container mx-auto grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r) => (
-            <article
-              key={r.id}
-              className="rounded-2xl border border-white/5 bg-zinc-900/40 p-6"
-            >
+            <article key={r.id} className="rounded-2xl border border-white/5 bg-zinc-900/40 p-6">
               <div className="mb-3 flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`h-4 w-4 ${
-                      i < r.rating
-                        ? 'fill-gold-400 text-gold-400'
-                        : 'text-zinc-700'
-                    }`}
-                  />
+                  <Star key={i} className={`h-4 w-4 ${i < r.rating ? 'fill-gold-400 text-gold-400' : 'text-zinc-700'}`} />
                 ))}
               </div>
-              <p className="mb-4 text-sm italic leading-relaxed text-zinc-400">
-                &ldquo;{r.comment}&rdquo;
-              </p>
+              <p className="mb-4 text-sm italic leading-relaxed text-zinc-400">&ldquo;{r.comment}&rdquo;</p>
               <p className="text-sm font-semibold text-zinc-200">{r.name}</p>
               {r.admin_reply && (
                 <div className="mt-4 rounded-lg border border-gold-400/15 bg-gold-400/5 p-3">
-                  <p className="mb-1 text-xs font-medium text-gold-400">
-                    Respuesta de Gustavo
-                  </p>
+                  <p className="mb-1 text-xs font-medium text-gold-400">Respuesta de Gustavo</p>
                   <p className="text-xs text-zinc-400">{r.admin_reply}</p>
                 </div>
               )}
@@ -106,6 +64,36 @@ export default async function ResenasPage() {
           ))}
         </div>
       </section>
+
+      <section className="pb-20">
+        <div className="container mx-auto max-w-2xl">
+          <h2 className="mb-8 text-center text-2xl font-bold text-zinc-50">Dejá tu reseña</h2>
+          <form action="/api/reviews" method="POST" className="space-y-4 rounded-2xl border border-white/5 bg-zinc-900/40 p-6">
+            <div>
+              <label className="mb-1 block text-sm text-zinc-400">Tu nombre</label>
+              <input name="name" required className="w-full rounded-lg border border-white/10 bg-zinc-950 px-4 py-2.5 text-sm text-zinc-100" />
+            </div>
+            <div>
+              <label className="mb-1 block text-sm text-zinc-400">Calificación</label>
+              <select name="rating" required className="w-full rounded-lg border border-white/10 bg-zinc-950 px-4 py-2.5 text-sm text-zinc-100">
+                <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+                <option value="4">⭐⭐⭐⭐ Muy bueno</option>
+                <option value="3">⭐⭐⭐ Bueno</option>
+                <option value="2">⭐⭐ Regular</option>
+                <option value="1">⭐ Malo</option>
+              </select>
+            </div>
+            <div>
+              <label className="mb-1 block text-sm text-zinc-400">Tu comentario</label>
+              <textarea name="comment" required rows={4} className="w-full rounded-lg border border-white/10 bg-zinc-950 px-4 py-2.5 text-sm text-zinc-100" />
+            </div>
+            <button type="submit" className="w-full rounded-lg bg-amber-500 py-2.5 text-sm font-semibold text-black hover:bg-amber-400">
+              Enviar reseña
+            </button>
+          </form>
+        </div>
+      </section>
     </div>
   )
 }
+
