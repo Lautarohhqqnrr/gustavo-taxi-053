@@ -14,10 +14,15 @@ export function Hero() {
     <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/95 to-zinc-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-400/10 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
-      </div>
+  <img
+    src="https://vtmrdriipfbsgnladwul.supabase.co/storage/v1/object/public/site/hero/2026/07/5f38d0f5-fd06-422a-832a-6ad8d8db75b1.webp"
+    alt="Gustavo Taxi Esquel"
+    className="absolute inset-0 h-full w-full object-cover"
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/60 via-zinc-950/70 to-zinc-950" />
+  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gold-400/10 via-transparent to-transparent" />
+  <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
+</div>
 
       <div className="container relative mx-auto px-4 py-20 text-center sm:px-6">
         <motion.div
